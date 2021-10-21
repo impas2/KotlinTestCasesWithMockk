@@ -3,6 +3,7 @@ package com.example.kotlintestcaseswithmockk.model
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.Id
+import javax.persistence.OneToMany
 
 @Entity
 class ClientEntity {
@@ -10,7 +11,10 @@ class ClientEntity {
     @Column(name = "id", nullable = false)
     open var id: Long? = null
 
-    var name:String?=null
-    var address:String?=null
+    var name: String? = null
+    var address: String? = null
+
+    @OneToMany()
+    lateinit var accounts: List<AccountEntity>
 
 }

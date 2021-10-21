@@ -1,17 +1,20 @@
 package com.example.kotlintestcaseswithmockk.model
 
 import java.util.*
-import javax.persistence.Entity
-import javax.persistence.Id
+import javax.persistence.*
 
 @Entity
-class Account {
+class AccountEntity {
 
     @Id
     val number:String?=generateNumber()
 
     val currency:String="RU"
-    val amount:String="0"
-    
+    var amount:String="0"
+
+    @ManyToOne()
+    @JoinColumn(name = "client.id")
+    lateinit var owner:ClientEntity
+
     fun generateNumber():String = UUID.randomUUID().toString()
 }
